@@ -24,7 +24,7 @@ def cadastra_aluno(alunos):
 
 def remove_aluno(alunos):
     id = int(input("Digite o Id do Aluno que Deseja(s) Remover:"))
-    alunos.remove(id)
+    aluno.remove(id)
     print("Aluno Removido com Sucesso") #concertar assim que listar estiver pronto
     menu(alunos)
 
