@@ -4,18 +4,18 @@ def cadastra_aluno(alunos):
     nome = input("Nome: ")
     idade = int(input("Idade: "))
     cpf = input("CPF: ")
-    ca = input("Ca: ")
+    ra = input("Ra: ")
     alunos.append({
         "id": id,
         "nome": nome,
         "idade": idade,
         "cpf": cpf,
-        "ca": ca
+        "ra": ra
     })
 
     print("O Aluno foi Cadastrado com Sucesso!")
 
-    novo_cadastro = int(input("Gostaria de Cadastrar um Novo Aluno(a)?? [1-Sim/2-Não]: "))
+    novo_cadastro = int(input("\nGostaria de Cadastrar um Novo Aluno(a)?? [1-Sim/2-Não]: "))
     if novo_cadastro == 1:
         cadastra_aluno(alunos)
     else:
@@ -60,23 +60,24 @@ def menu(alunos):
         menu(alunos)
 
 def fechar(alunos):
-    fechar_lista = int(input("Tem certeza que deseja fechar o programa? 1 - S / 2 - N "))
+    fechar_lista = int(input("\nTem certeza que deseja fechar o programa? 1 - S / 2 - N: "))
 
     if fechar_lista == 1:
         print('Programa finalizado!')
+        print('Created By:Daniel Souza da Cruz, Eduardo Gabriel')
     else:
         menu(alunos)
 
 def lista_aluno(alunos):
     print('\n ### Listagem ### ')
     for aluno in alunos:
-        print(aluno['id'] + ', ' + aluno['nome'] + ', ' + str(aluno['idade']) + ', ' + str(aluno['cpf'] + ', ' + aluno['ca']))
+        print(aluno['id'] + ' | ' + aluno['nome'] + ' | ' + str(aluno['idade']) + ' | ' + str(aluno['cpf'] + ' | ' + aluno['ra']))
 
     print('\n### ------------- ###')
     print('# 1 - cadastrar # ')
     print('# 2 - remover # ')
     print('# 3 - atualizar # ')
-    print('# 4 - fechar # ')
+    print('# 4 - retornar # ')
     print('### ------------ ### ')
     opcao_lista = int(input("\nDigite uma função para prosseguir: "))
 
@@ -87,7 +88,7 @@ def lista_aluno(alunos):
     elif opcao_lista == 3:
         atualiza_aluno(alunos)
     elif opcao_lista == 4:
-        fechar(alunos)
+        menu(alunos)
     else:
         print('Programa Finalizado')
 
@@ -99,9 +100,11 @@ def atualiza_aluno(alunos):
             aluno['nome'] = input('Nome: ')
             aluno['idade'] = int(input('Idade: '))
             aluno['cpf'] = input('Cpf: ')
-            aluno['ca'] = input('Ca: ')
-            print('Dados do aluno atualizados!')
+            aluno['ra'] = input('Ra: ')
+            print('Aluno Atualizado com Sucesso!')
+            print('Retornando ao Menu!')
             menu(alunos)
+
 
 if __name__ == '__main__':
     alunos = []
