@@ -15,7 +15,7 @@ def cadastra_aluno(alunos):
 
     print("O Aluno foi Cadastrado com Sucesso!")
 
-    novo_cadastro = int(input("\nGostaria de Cadastrar um Novo Aluno(a)?? [1-Sim/2-Não]: "))
+    novo_cadastro = int(input("\nGostaria de Cadastrar um Novo Aluno(a)?? 1 - Sim / 2 - Não: "))
     if novo_cadastro == 1:
         cadastra_aluno(alunos)
     else:
@@ -23,7 +23,7 @@ def cadastra_aluno(alunos):
 
 
 def remove_aluno(alunos):
-    id = input("Digite o Id do Aluno que Deseja(s) Remover:")
+    id = input("Digite o Id do Aluno que Deseja Remover: ")
     i = 0
 
     while i < len(alunos):
@@ -36,12 +36,12 @@ def remove_aluno(alunos):
 def menu(alunos):
     print("\n## Menu ##")
     print("--- Operações Disponiveis ---")
-    print("# 1 - Cadastrar #")
-    print("# 2 - Remover #")
-    print("# 3 - Listar #")
-    print("# 4 - Atualizar #")
-    print("# 5 - Fechar #")
-    print("### -------- ###")
+    print(" 1 - Cadastrar ")
+    print(" 2 - Remover ")
+    print(" 3 - Listar ")
+    print(" 4 - Atualizar ")
+    print(" 5 - Fechar ")
+    print((("|" + "=-" * 10 + "|")))
 
     operacao = int(input("\nDigite a Operação: "))
 
@@ -71,7 +71,8 @@ def fechar(alunos):
 def lista_aluno(alunos):
     print('\n ### Listagem ### ')
     for aluno in alunos:
-        print(aluno['id'] + ' | ' + aluno['nome'] + ' | ' + str(aluno['idade']) + ' | ' + str(aluno['cpf'] + ' | ' + aluno['ra']))
+        print("Id: " + aluno['id'] + ' | ' + "Nome: " + aluno['nome'] + ' | ' + "Idade: " + str(aluno['idade']) + ' | ' + "Cpf: " + str(aluno['cpf'] + ' | ' + "RA: " + aluno['ra']))
+        print(("|" + "=-" * 35 + "|"))
 
     print('\n### ------------- ###')
     print('# 1 - cadastrar # ')
