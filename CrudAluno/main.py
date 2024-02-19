@@ -1,39 +1,43 @@
-def cadastra_aluno(alunos):
+def register_students(students):
     print('\n### Operação Cadastrar ###')
-    id = input("Id: ")
-    nome = input("Nome: ")
-    idade = int(input("Idade: "))
+    name = input("Nome: ")
+    age = int(input("Idade: "))
     cpf = input("CPF: ")
     ra = input("Ra: ")
-    alunos.append({
-        "id": id,
-        "nome": nome,
-        "idade": idade,
+
+    if len(students) == 0:
+        student_id = 1
+    else:
+        student_id = int(students[-1]["id"]) + 1
+
+    students.append({
+        "id": str(student_id),
+        "nome": name,
+        "idade": age,
         "cpf": cpf,
         "ra": ra
     })
 
     print("O Aluno foi Cadastrado com Sucesso!")
 
-    novo_cadastro = int(input("\nGostaria de Cadastrar um Novo Aluno(a)?? 1 - Sim / 2 - Não: "))
-    if novo_cadastro == 1:
-        cadastra_aluno(alunos)
+    new_register = int(input("\nGostaria de Cadastrar um Novo Aluno(a)?? 1 - Sim / 2 - Não: "))
+    if new_register == 1:
+        register_students(students)
     else:
-        menu(alunos)
+        menu(students)
 
-
-def remove_aluno(alunos):
+def remove_student(students):
     id = input("Digite o Id do Aluno que Deseja Remover: ")
     i = 0
 
-    while i < len(alunos):
-        if alunos[i]['id'] == id:
-            alunos.pop(i)
+    while i < len(students):
+        if students[i]['id'] == id:
+            students.pop(i)
             print("Aluno Removido com Sucesso")
         i += 1
-    menu(alunos)
+    menu(students)
 
-def menu(alunos):
+def menu(students):
     print("\n## Menu ##")
     print("--- Operações Disponiveis ---")
     print(" 1 - Cadastrar ")
@@ -43,70 +47,49 @@ def menu(alunos):
     print(" 5 - Fechar ")
     print((("|" + "=-" * 10 + "|")))
 
-    operacao = int(input("\nDigite a Operação: "))
+    operation = int(input("\nDigite a Operação: "))
 
-    if operacao == 1:
-        cadastra_aluno(alunos)
-    elif operacao == 2:
-        remove_aluno(alunos)
-    elif operacao == 3:
-        lista_aluno(alunos)
-    elif operacao == 4:
-        atualiza_aluno(alunos)
-    elif operacao == 5:
-        fechar(alunos)
+    if operation == 1:
+        register_students(students)
+    elif operation == 2:
+        remove_student(students)
+    elif operation == 3:
+        list_student(students)
+    elif operation == 4:
+        update_student(students)
+    elif operation == 5:
+        close(students)
     else:
         print("Essa Operação Não Existe")
-        menu(alunos)
+        menu(students)
 
-def fechar(alunos):
-    fechar_lista = int(input("\nTem certeza que deseja fechar o programa? 1 - S / 2 - N: "))
+def close(students):
+    print('Programa finalizado!')
+    print('Created By: Daniel Souza da Cruz, Eduardo Gabriel')
 
-    if fechar_lista == 1:
-        print('Programa finalizado!')
-        print('Created By:Daniel Souza da Cruz, Eduardo Gabriel')
-    else:
-        menu(alunos)
-
-def lista_aluno(alunos):
+def list_student(students):
     print('\n ### Listagem ### ')
-    for aluno in alunos:
-        print("Id: " + aluno['id'] + ' | ' + "Nome: " + aluno['nome'] + ' | ' + "Idade: " + str(aluno['idade']) + ' | ' + "Cpf: " + str(aluno['cpf'] + ' | ' + "RA: " + aluno['ra']))
+    for student in students:
+        print("Id: " + student['id'] + ' | ' + "Nome: " + student['nome'] + ' | ' + "Idade: " + str(student['idade']) + ' | ' + "Cpf: " + str(student['cpf'] + ' | ' + "RA: " + student['ra']))
         print(("|" + "=-" * 35 + "|"))
+    menu(students)
 
-    print('\n### ------------- ###')
-    print('# 1 - cadastrar # ')
-    print('# 2 - remover # ')
-    print('# 3 - atualizar # ')
-    print('# 4 - retornar # ')
-    print('### ------------ ### ')
-    opcao_lista = int(input("\nDigite uma função para prosseguir: "))
-
-    if opcao_lista == 1:
-        cadastra_aluno(alunos)
-    elif opcao_lista == 2:
-        remove_aluno(alunos)
-    elif opcao_lista == 3:
-        atualiza_aluno(alunos)
-    elif opcao_lista == 4:
-        menu(alunos)
-    else:
-        print('Programa Finalizado')
-
-def atualiza_aluno(alunos):
+def update_student(students):
+    for student in students:
+        print("Id: " + student['id'] + ' | ' + "Nome: " + student['nome'] + ' | ' + "Idade: " + str(student['idade']) + ' | ' + "Cpf: " + str(student['cpf'] + ' | ' + "RA: " + student['ra']))
+        print(("|" + "=-" * 35 + "|"))
     id = input('Digite o id do aluno: ')
 
-    for aluno in alunos:
-        if aluno['id'] == id:
-            aluno['nome'] = input('Nome: ')
-            aluno['idade'] = int(input('Idade: '))
-            aluno['cpf'] = input('Cpf: ')
-            aluno['ra'] = input('Ra: ')
+    for student in students:
+        if student['id'] == id:
+            student['nome'] = input('Nome: ')
+            student['idade'] = int(input('Idade: '))
+            student['cpf'] = input('Cpf: ')
+            student['ra'] = input('Ra: ')
             print('Aluno Atualizado com Sucesso!')
             print('Retornando ao Menu!')
-            menu(alunos)
-
+            menu(students)
 
 if __name__ == '__main__':
-    alunos = []
-    menu(alunos)
+    students = []
+    menu(students)
